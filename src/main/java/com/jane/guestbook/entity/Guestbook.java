@@ -22,4 +22,18 @@ public class Guestbook extends BaseTimeEntity {
 
     @Column(length = 50, nullable = false)
     private String writer;
+
+    public Guestbook(String title, String content, String writer) {
+        this.title = title;
+        this.content = content;
+        this.writer = writer;
+    }
+
+    public void changeTitle(String title) {
+        this.title = title;
+    }
+
+    public void changeContent(String content) {
+        this.content = content;
+    }
 }
