@@ -7,6 +7,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.Optional;
@@ -42,7 +43,7 @@ public class MemoRepositoryTest {
         assertThat(memo.getMemoText().equals("Sample"));
     }
 
-    @Transactional // 연결된 DB에 데이터 생성 안 됨.
+    @Transactional // 연결된 DB에 데이터 생성 안 됨. --> 아래 테스트들을 위해 먼저 실행
     @Test
     public void memo_여러개등록_테스트() {
         IntStream.rangeClosed(1, 100).forEach(i -> {
@@ -164,5 +165,21 @@ public class MemoRepositoryTest {
         for (Memo memo : result.getContent()) {
             System.out.println(memo);
         }
+    }
+
+    @Test
+    public void 정렬_테스트() {
+        Sort sort1 = Sort.by("mno").descending();
+        Sort sort2 = Sort.by("memoText").ascending();
+        Sort sortAll = sort1.and(sort2); // Sort 객체의 and()를 이용하여 여러 개의 정렬 조건을 다르게 지정하여 연결
+
+        Pageable pageable = PageRequest.of(0, 10, sort1);
+        Pageable pageableAnd = PageRequest.of(0, 10, sortAll); // 결합된 정렬 조건 사용
+
+        Page<Memo> result = memoRepository.findAll(pageable);
+
+        result.get().forEach(memo -> {
+            System.out.println(memo);
+        });
     }
 }
