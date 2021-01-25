@@ -10,6 +10,7 @@ import java.time.LocalDateTime;
 import java.util.Optional;
 import java.util.stream.IntStream;
 
+import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.jupiter.api.Assertions.*;
 
 @SpringBootTest
@@ -71,5 +72,6 @@ public class GuestbookRepositoryTest {
         //then
         System.out.println(result.get().getModDate());
         assertNotEquals(result.get().getModDate(), result.get().getRegDate());
+        assertThat(result.get().getModDate()).isAfter(result.get().getRegDate());
     }
 }
