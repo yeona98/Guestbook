@@ -36,7 +36,7 @@
             </li>
 
             <!-- 현재 페이지 여부를 체크해서 'active' 클래스 출력 여부 설정 -->
-            <li th:class="'page-item ' + ${result.currentPage == page?'active':''}"
+            <li th:class="'page-item ' + ${result.currentPage == pageNum?'active':''}"
                 th:each="pageNum: ${result.pageNumList}">
                 <a class="page-link"
                    th:href="@{/guestbook/list(page = ${pageNum})}">
