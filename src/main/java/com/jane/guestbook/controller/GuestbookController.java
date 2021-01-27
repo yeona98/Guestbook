@@ -26,7 +26,7 @@ public class GuestbookController {
     }
 
     @GetMapping("/list")
-    public void list(PageRequestDto pageRequestDto, Model model) {
+    public void list(PageRequestDto pageRequestDto, Model model) { // 파라미터로 PageRequestDto(page & size) 를 받음
 
         log.info("show list page" + pageRequestDto);
 

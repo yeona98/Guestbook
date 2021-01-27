@@ -24,17 +24,32 @@
             </tbody>
         </table>
 
-        <!-- 페이지 리스트 화면 -->
+        <!-- 리스트 하단 페이지 화면 -->
         <ul class="pagination h-100 justify-content-center align-items-center">
 
             <li class="page-item" th:if="${result.prev}">
-                <a class="page-link" href="#" tabindex="-1">Previous</a>
+                <a class="page-link"
+                   th:href="@{/guestbook/list(page = ${result.start - 1})}"
+                   tabindex="-1">
+                    Prev
+                </a>
+            </li>
+
+            <!-- 현재 페이지 여부를 체크해서 'active' 클래스 출력 여부 설정 -->
+            <li th:class="'page-item ' + ${result.currentPage == page?'active':''}"
+                th:each="pageNum: ${result.pageNumList}">
+                <a class="page-link"
+                   th:href="@{/guestbook/list(page = ${pageNum})}">
+                    [[${pageNum}]]
+                </a>
             </li>
 
 
-
             <li class="page-item" th:if="${result.next}">
-                <a class="page-link" href="#">Next</a>
+                <a class="page-link"
+                   th:href="@{/guestbook/list(page = ${result.end + 1})}">
+                    Next
+                </a>
             </li>
 
         </ul>

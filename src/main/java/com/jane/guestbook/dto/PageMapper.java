@@ -23,8 +23,9 @@ public class PageMapper<DTO, ENTITY> { // 다른 곳에서 가져다 쓸 수 있
     private int listSize;
     private int start, end;
     private boolean prev, next;
-    private List<Integer> pageList; // 페이지 번호 목록
+    private List<Integer> pageNumList; // 페이지 번호 목록
 
+    // Page<ENTITY> 타입으로 받은 페이지 처리 결과(ENTITY 객체들)를 DTO 객체로 변환
     public PageMapper(Page<ENTITY> result, Function<ENTITY, DTO> fn) {
         dtoList = result.stream().map(fn).collect(Collectors.toList());
 
@@ -45,6 +46,6 @@ public class PageMapper<DTO, ENTITY> { // 다른 곳에서 가져다 쓸 수 있
         prev = start > 1;
         next = totalPage > currentEnd;
 
-        pageList = IntStream.rangeClosed(start, end).boxed().collect(Collectors.toList());
+        pageNumList = IntStream.rangeClosed(start, end).boxed().collect(Collectors.toList());
     }
 }

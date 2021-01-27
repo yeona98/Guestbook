@@ -70,6 +70,6 @@ class GuestbookServiceTest {
         System.out.println("전체 페이지 수 TOTAL: " + resultDto.getTotalPage());
 
         System.out.println("----------------화면에 출력될 페이지 번호---------------");
-        resultDto.getPageList().forEach(i -> System.out.println(i));
+        resultDto.getPageNumList().forEach(i -> System.out.println(i));
     }
 }
