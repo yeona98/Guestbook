@@ -24,13 +24,13 @@ public class GuestbookMapper {
     // EntityToDTO
     public static GuestbookRequestDto of(Guestbook entity) {
         GuestbookRequestDto dto = GuestbookRequestDto.builder()
-                                                                        .gno(entity.getGno())
-                                                                        .title(entity.getTitle())
-                                                                        .content(entity.getContent())
-                                                                        .writer(entity.getWriter())
-                                                                        .regDate(entity.getRegDate())
-                                                                        .modDate(entity.getModDate())
-                                                                        .build();
+                                                    .gno(entity.getGno())
+                                                    .title(entity.getTitle())
+                                                    .content(entity.getContent())
+                                                    .writer(entity.getWriter())
+                                                    .regDate(entity.getRegDate())
+                                                    .modDate(entity.getModDate())
+                                                    .build();
         return dto;
     }
 }

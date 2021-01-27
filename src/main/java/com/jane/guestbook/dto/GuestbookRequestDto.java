@@ -27,10 +27,10 @@ public class GuestbookRequestDto {
     // DTOtoEntity
     public Guestbook toEntity() {
         Guestbook entity = Guestbook.builder()
-                                    .gno(gno)
-                                    .title(title)
-                                    .content(content)
-                                    .writer(writer)
+                                    .gno(this.getGno())
+                                    .title(this.getTitle())
+                                    .content(this.getContent())
+                                    .writer(this.getWriter())
                                     .build();
         return entity;
     }
