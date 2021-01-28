@@ -51,4 +51,24 @@ public class GuestbookServiceImpl implements GuestbookService {
 
         return result.isPresent()? GuestbookMapper.of(result.get()) : null;
     }
+
+    @Override
+    public void remove(Long gno) {
+        guestbookRepository.deleteById(gno);
+    }
+
+    @Override
+    public void modify(GuestbookRequestDto payload) {
+        Optional<Guestbook> result = guestbookRepository.findById(payload.getGno());
+
+        if (result.isPresent()) {
+            Guestbook modifiedGuestbook = result.get();
+
+            // title, content 만 업데이트
+            modifiedGuestbook.changeTitle(payload.getTitle());
+            modifiedGuestbook.changeContent(payload.getContent());
+
+            guestbookRepository.save(modifiedGuestbook);
+        }
+    }
 }

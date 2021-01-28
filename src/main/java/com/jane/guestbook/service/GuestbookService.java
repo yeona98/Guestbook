@@ -12,4 +12,8 @@ public interface GuestbookService {
     PageMapper<GuestbookRequestDto, Guestbook> getList(PageRequestDto payload);
     // 조회 처리
     GuestbookRequestDto read(Long gno);
+    // 삭제 처리
+    void remove(Long gno);
+    // 수정 처리
+    void modify(GuestbookRequestDto payload);
 }

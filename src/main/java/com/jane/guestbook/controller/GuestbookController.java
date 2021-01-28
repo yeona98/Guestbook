@@ -51,7 +51,7 @@ public class GuestbookController {
         return "redirect:/guestbook/list";
     }
 
-    @GetMapping("/read")
+    @GetMapping({"/read", "/modify"})
     public void read(long gno, @ModelAttribute("requestDto") PageRequestDto requestDto, Model model) {
         log.info("show read page of gno " + gno);
         GuestbookRequestDto payload = guestbookService.read(gno);
