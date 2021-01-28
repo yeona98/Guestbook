@@ -14,6 +14,7 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
+import java.util.Optional;
 import java.util.function.Function;
 
 @Log4j2
@@ -42,5 +43,12 @@ public class GuestbookServiceImpl implements GuestbookService {
 
         // 이를 Mapper 로 구성
         return new PageMapper<>(result, fn);
+    }
+
+    @Override
+    public GuestbookRequestDto read(Long gno) {
+        Optional<Guestbook> result = guestbookRepository.findById(gno);
+
+        return result.isPresent()? GuestbookMapper.of(result.get()) : null;
     }
 }

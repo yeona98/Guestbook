@@ -3,7 +3,16 @@
 
 <th:block th:replace="~{ /layout/basic :: setContent(~{this::content}) }">
     <th:block th:fragment="content">
-        <h1>GuestBook List Page</h1>
+        <h1 class="mt-4">
+            GuestBook List Page
+            <span>
+                <a th:href="@{/guestbook/register}">
+                    <button type="button" class="btn btn-outline-primary">
+                        REGISTER
+                    </button>
+                </a>
+            </span>
+        </h1>
 
         <table class="table table-striped">
             <thead>
@@ -16,7 +25,11 @@
             </thead>
             <tbody>
                 <tr th:each="dto : ${result.dtoList}">
-                    <th scope="row">[[${dto.gno}]]</th>
+                    <th scope="row">
+                        <a th:href="@{/guestbook/read(gno = ${dto.gno}, page = ${result.currentPage})}">
+                            [[${dto.gno}]]
+                        </a>
+                    </th>
                     <td>[[${dto.title}]]</td>
                     <td>[[${dto.writer}]]</td>
                     <td>[[${#temporals.format(dto.regDate, 'yyyy/MM/dd')}]]</td>
@@ -55,8 +68,8 @@
         </ul>
 
         <!-- 글 등록 후 뜨는 모달창 -->
-        <div class="model" tabindex="-1" role="dialog">
-            <div class="model-dialog" role="document">
+        <div class="modal" tabindex="-1" role="dialog">
+            <div class="modal-dialog" role="document">
 
                 <div class="modal-header">
                     <h5 class="modal-title">Modal title</h5>
@@ -87,7 +100,12 @@
         <script th:inline="javascript">
             var msg = [[${message}]]
             console.log(msg);
+
+            if(msg) {
+                $.(".modal").modal();
+            }
         </script>
+
     </th:block>
 </th:block>
 

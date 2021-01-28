@@ -10,4 +10,6 @@ public interface GuestbookService {
     Long register(GuestbookRequestDto payload);
     // 목록 처리
     PageMapper<GuestbookRequestDto, Guestbook> getList(PageRequestDto payload);
+    // 조회 처리
+    GuestbookRequestDto read(Long gno);
 }
