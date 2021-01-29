@@ -34,17 +34,29 @@
 
         </form>
 
-        <button type="button" class="btn btn-primary">
+        <button type="button" class="btn btn-primary modifyBtn">
             Modify
         </button>
 
-        <button type="button" class="btn btn-info">
+        <button type="button" class="btn btn-info listBtn">
             List
         </button>
 
-        <button type="button" class="btn btn-danger">
+        <button type="button" class="btn btn-danger removeBtn">
             Remove
         </button>
+
+        <script th:inline="javascript">
+            var actionForm = $("form"); // form 태그 객체 받기
+
+            $(".removeBtn").click(function () {
+                actionForm
+                    .attr("action", "/guestbook/remove")
+                    .attr("method", "post");
+
+                actionForm.submit();
+            })
+        </script>
 
     </th:block>
 </th:block>
