@@ -7,7 +7,7 @@ import java.time.LocalDateTime;
 
 @Getter
 @RequiredArgsConstructor
-public class GuestbookRequestDto {
+public class GuestbookRegisterRequestDto {
     private Long gno;
     private String title;
     private String content;
@@ -15,7 +15,7 @@ public class GuestbookRequestDto {
     private LocalDateTime regDate, modDate;
 
     @Builder
-    public GuestbookRequestDto(Long gno, String title, String content, String writer, LocalDateTime regDate, LocalDateTime modDate) {
+    public GuestbookRegisterRequestDto(Long gno, String title, String content, String writer, LocalDateTime regDate, LocalDateTime modDate) {
         this.gno = gno;
         this.title = title;
         this.content = content;

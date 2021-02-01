@@ -5,7 +5,7 @@
     <th:block th:fragment="content">
         <h1 class="mt-4">GuestBook Modify Page</h1>
 
-        <form action="/guestbook/modify" method="post">
+        <form th:action="@{/guestbook/modify}" method="post">
 
             <div class="form-group">
                 <label>Gno</label>

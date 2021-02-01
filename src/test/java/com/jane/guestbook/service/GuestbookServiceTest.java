@@ -1,6 +1,6 @@
 package com.jane.guestbook.service;
 
-import com.jane.guestbook.dto.GuestbookRequestDto;
+import com.jane.guestbook.dto.GuestbookRegisterRequestDto;
 import com.jane.guestbook.dto.PageMapper;
 import com.jane.guestbook.dto.PageRequestDto;
 import com.jane.guestbook.entity.Guestbook;
@@ -28,7 +28,7 @@ class GuestbookServiceTest {
         String content = "content";
         String writer = "user";
 
-        GuestbookRequestDto payload = GuestbookRequestDto.builder()
+        GuestbookRegisterRequestDto payload = GuestbookRegisterRequestDto.builder()
                                             .title(title)
                                             .content(content)
                                             .writer(writer)
@@ -57,10 +57,10 @@ class GuestbookServiceTest {
                                                         .size(10)
                                                         .build();
 
-        PageMapper<GuestbookRequestDto, Guestbook> resultDto = guestbookService.getList(pageRequestDto);
+        PageMapper<GuestbookRegisterRequestDto, Guestbook> resultDto = guestbookService.getList(pageRequestDto);
 
         System.out.println("-----------------현재 페이지 DTO LIST-----------------");
-        for(GuestbookRequestDto payload : resultDto.getDtoList()) {
+        for(GuestbookRegisterRequestDto payload : resultDto.getDtoList()) {
             System.out.println(payload);
         }
 

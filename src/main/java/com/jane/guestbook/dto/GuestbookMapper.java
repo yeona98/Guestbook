@@ -22,8 +22,8 @@ public class GuestbookMapper {
     }
 
     // EntityToDTO
-    public static GuestbookRequestDto of(Guestbook entity) {
-        GuestbookRequestDto dto = GuestbookRequestDto.builder()
+    public static GuestbookRegisterRequestDto of(Guestbook entity) {
+        GuestbookRegisterRequestDto dto = GuestbookRegisterRequestDto.builder()
                                                     .gno(entity.getGno())
                                                     .title(entity.getTitle())
                                                     .content(entity.getContent())
